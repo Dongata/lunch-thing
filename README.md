@@ -1,1 +1,1 @@
-"# lunch-thing" 
+# lunch-thing
