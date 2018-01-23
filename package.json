@@ -1,36 +1,40 @@
 {
-    "name": "launch-manager",
-    "version": "1.0.0",
-    "description": "launch manager api",
-    "main": "/dist/server.js",
-    "scripts": {
-        "test": "mocha",
-        "test-coverage": "npm test && istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
-        "install-local": "npm install -g mocha & npm install -g node-inspector & npm install",
-        "start": "node dist\\server.js 1 dev 127.0.0.1 3000 9000",
-        "debug": "node-debug dist\\server.js 0 dev 127.0.0.1 3000 9000"
-    },
-    "repository": {
-        "type": "git",
-        "url": "gcerioni/mongodb-test"
-    },
-    "keywords": [
-        "none"
-    ],
-    "author": "Gastón cerioni",
-    "license": "mit",
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "istanbul": "^0.4.5",
-        "mocha": "^4.0.1",
-        "sinon": "^4.0.2"
-    },
-    "dependencies": {
-        "@types/node": "^9.3.0",
-        "body-parser": "^1.18.2",
-        "cluster-service": "^2.0.0",
-        "express": "^4.16.2",
-        "http-typescript": "^1.0.0",
-        "os": "^0.1.1"
-    }
+  "name": "launch-manager",
+  "version": "1.0.0",
+  "description": "launch manager api",
+  "main": "/dist/server.js",
+  "scripts": {
+    "compile": "rimraf ./dist && tsc --listfiles && npm run json",
+    "test": "mocha",
+    "test-coverage": "npm test && istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+    "install-local": "npm install -g mocha & npm install -g node-inspector & npm install",
+    "start": "node dist\\server.js 1 dev 127.0.0.1 3000 9000",
+    "debug": "npm run compile && node-debug dist\\server.js 0 dev 127.0.0.1 3000 9000",
+    "json": "copyfiles app/**/*.json dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gcerioni/mongodb-test"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Gastón cerioni",
+  "license": "mit",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "copyfiles": "^1.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.2"
+  },
+  "dependencies": {
+    "@types/node": "^9.3.0",
+    "body-parser": "^1.18.2",
+    "cluster-service": "^2.0.0",
+    "express": "^4.16.2",
+    "http-typescript": "^1.0.0",
+    "os": "^0.1.1",
+    "rimraf": "^2.6.2"
+  }
 }

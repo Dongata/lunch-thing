@@ -1,7 +1,8 @@
-{
-    "routes": [{
+[
+    {
         "route": "/v1/launch/",
         "method": "GET",
-        "controller": "../controller/v1/launch/launchController"
-    }]
-}
+        "controller": "../controller/v1/launch/launchController",
+        "action" : "get"
+    }
+]

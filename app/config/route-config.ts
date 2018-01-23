@@ -57,17 +57,18 @@ export class RouteConfig{
 
     private getAction(route : Route) : string{
         if(!route || !route.action || route.action.length === 0) {
-          return this.getMethod(route);
+          return this.getMethod(route).toLowerCase();
         }
         return route.action;
     }
 
     private registerRoute(application : Application, controller : any, route : string, method : string, action : string) {
         var routeApp : any = application.route(route);
-        routeApp[method](function(req : any, res : any, next : any) {
+        routeApp[method] = (req : any, res : any, next : any) =>{
             controller[action](req, res, next);
-        });
+        };
     }
+    
     
     private createConfigRoute(application : Application) {
         if(!this.setting){

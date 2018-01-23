@@ -12,7 +12,7 @@ export class Worker {
     private routeConfig : RouteConfig;
 
     constructor(settings : Settings){
-        this.application.init();
+        this.application = require('express')();
         this.settings = settings;
         this.routeConfig = new RouteConfig(this.settings);
         this.configureApplication();
@@ -39,7 +39,7 @@ export class Worker {
     }
 
     private startServer(){
-        var server : any = server.createServer(this.application);
+        var server : Server = new Server(this.application);
 
         server.listen(
             this.settings.setting.workerPort, 

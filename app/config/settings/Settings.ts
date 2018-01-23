@@ -1,4 +1,4 @@
-import { os } from 'os';
+const os = require('os');
 import { Setting } from './Setting';
 
 export class Settings {
@@ -31,7 +31,7 @@ export class Settings {
     }
 
     private loadServerSettings(setting : Setting){
-        setting.serverName = os.hostName().toLowerCase();
+        setting.serverName = os.hostname().toLowerCase();
         setting.serverCores = os.cpus().length;
     }
     
